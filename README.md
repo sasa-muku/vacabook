@@ -1,4 +1,11 @@
 # API 利用方法
+* rails環境構築
+  * Rails 5.2.6
+  * インストール後コマンド
+    * bin/rails db:create
+    * bin/rails db:migrate
+    * bin/rails s
+
 ## 仕様
 
 | 動作 |  Method  |  URL Sample
@@ -36,7 +43,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-  * Rails 5.2.6
+  * 
 
 * System dependencies
 
@@ -44,11 +51,7 @@ Things you may want to cover:
 
 * Database creation
 
-  ```rails db:create```
-
 * Database initialization
-
-  ```rails db:migrate```
 
 * How to run the test suite
 
