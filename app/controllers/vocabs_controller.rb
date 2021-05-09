@@ -1,2 +1,0 @@
-class VocabsController < ApplicationController
-end
