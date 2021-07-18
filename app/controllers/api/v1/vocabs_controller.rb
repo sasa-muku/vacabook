@@ -1,5 +1,6 @@
 
 class Api::V1::VocabsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_vocab, only: [:show, :update, :destroy]
 
   def index
