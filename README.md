@@ -1,12 +1,16 @@
-# API 利用方法
-* rails環境構築
-  * Rails 5.2.6
-  * インストール後コマンド
-    * bin/rails db:create
-    * bin/rails db:migrate
-    * bin/rails s
+## はじめに
+### 環境
+* Rails 5.2.6
 
-## 仕様
+### サーバ起動に必要なコマンド
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bin/rails s
+```
+
+## 基本
 
 | 動作 |  Method  |  URL Sample
 | ---- | ---- | ---- |
@@ -18,22 +22,26 @@
 
 ### リクエスト例（新規登録）
 Content-Type:application/json
-
+```
 {
     "en":"cat",
     "ja":"猫",
     "memo":"犬のがかわいい"
 }
+```
 
-### リクエスト例（更新）
-Content-Type:application/json
+## 認証
+基本的に `devise_token_auth` をデフォルト設定で利用。
 
-{
-    "en":"cat",
-    "ja":"猫",
-    "memo":"やっぱり猫のがかわいい"
-}
+https://devise-token-auth.gitbook.io/devise-token-auth/usage
 
+リクエストヘッダーに必要な認証情報
+```
+"access-token": "wwwww",
+"token-type":   "Bearer",
+"client":       "xxxxx",
+"uid":          "zzzzz"
+```
 
 # README
 
