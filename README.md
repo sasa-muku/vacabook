@@ -33,10 +33,19 @@ Content-Type:application/json
 }
 ```
 ## 音声変換
+単語を渡すと Base64 エンコードされた音声データ(mp3)を返す。
 
 | 動作 |  Method  |  URL Sample
 | ---- | ---- | ---- |
 | 音声データ取得 |  GET  |  /api/v1/speeches/:word |
+
+### レスポンス例
+```
+{
+    "status": "SUCCESS",
+    "data": "//NExAASCCIIAAhEAGAAEMW4kAYPnwwIKw/BBTpwTvB+IAxIfghUfW.."
+}
+```
 
 ## 認証
 基本的に `devise_token_auth` をデフォルト設定で利用。
