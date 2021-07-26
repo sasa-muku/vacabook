@@ -1,4 +1,7 @@
 ## はじめに
+### 概要
+英単語アプリ作成のための API。英単語の登録、単語の音声再生の機能を持つ。
+
 ### 環境
 * Rails 5.2.6
 
@@ -27,6 +30,20 @@ Content-Type:application/json
     "en":"cat",
     "ja":"猫",
     "memo":"犬のがかわいい"
+}
+```
+## 音声変換
+単語を渡すと Base64 エンコードされた音声データ(mp3)を返す。
+
+| 動作 |  Method  |  URL Sample
+| ---- | ---- | ---- |
+| 音声データ取得 |  GET  |  /api/v1/speeches/:word |
+
+### レスポンス例
+```
+{
+    "status": "SUCCESS",
+    "data": "//NExAASCCIIAAhEAGAAEMW4kAYPnwwIKw/BBTpwTvB+IAxIfghUfW.."
 }
 ```
 
