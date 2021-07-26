@@ -4,7 +4,7 @@ class Api::V1::SpeechesController < ApplicationController
   def show
     @param_en = params[:en]
     if Speech.exists?(en: @param_en)
-      audio = Speech.where("en = ?", @param_en).find(1)
+      audio = Speech.find_by("en = ?", @param_en).audio
       render json: { status: 'SUCCESS', data: audio }
     else
       create
