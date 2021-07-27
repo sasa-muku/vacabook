@@ -14,8 +14,8 @@ class Api::V1::SpeechesController < ApplicationController
   private
 
   def create
-    tts = TTS.new
-    audio = tts.convert_to_speech(@param_en)
+    tts = TTS.new(@param_en)
+    audio = tts.convert_to_speech()
     speech = Speech.new(en: @param_en, audio: audio)
     if speech.save
       render json: { status: 'SUCCESS', data: audio }
