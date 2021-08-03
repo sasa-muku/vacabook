@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_24_065126) do
+ActiveRecord::Schema.define(version: 2021_08_02_234949) do
 
   create_table "speeches", force: :cascade do |t|
     t.string "en"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2021_07_24_065126) do
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_vocabs_on_user_id"
   end
 
 end
