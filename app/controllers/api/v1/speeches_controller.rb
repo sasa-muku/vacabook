@@ -1,5 +1,7 @@
 class Api::V1::SpeechesController < ApplicationController
   require './app/tts/main'
+  
+  before_action :authenticate_user!
 
   def show
     @param_en = params[:en]
