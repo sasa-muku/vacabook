@@ -4,7 +4,7 @@ class Api::V1::VocabsController < ApplicationController
   before_action :set_vocab, only: [:show, :update, :destroy]
 
   def index
-    vocabs = Vocab.order(created_at: :desc)
+    vocabs = current_user.vocabs
     render json: { status: 'SUCCESS', message: 'Loaded vocabs', data: vocabs }
   end
 
@@ -13,7 +13,7 @@ class Api::V1::VocabsController < ApplicationController
   end
 
   def create
-    vocab = Vocab.new(vocab_params)
+    vocab = current_user.vocabs.build(vocab_params)
     if vocab.save
       render json: { status: 'SUCCESS', data: vocab }
     else
@@ -37,7 +37,7 @@ class Api::V1::VocabsController < ApplicationController
   private
 
   def set_vocab
-    @vocab = Vocab.find(params[:id])
+    @vocab = current_user.vocabs.find(params[:id])
   end
 
   def vocab_params
