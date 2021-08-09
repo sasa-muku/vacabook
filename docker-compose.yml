@@ -6,7 +6,7 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: 'postgres'
-  web:
+  app:
     build: 
       context: .
       dockerfile: dockerfiles/rails/Dockerfile
