@@ -1,15 +1,16 @@
-FROM ruby:2.6.8-alpine3.14 AS builder
-RUN apk update -qq && \
-    apk add --no-cache build-base postgresql-dev nodejs && \
-    mkdir /app
+FROM ruby:2.6.8-slim-buster AS builder
+RUN apt-get update -qq && \
+    apt-get install -y build-essential libpq-dev nodejs
+RUN mkdir /app
 WORKDIR /app
 COPY Gemfile Gemfile.lock /app/
 RUN gem install bundler:2.2.16 && bundle install
 
-FROM ruby:2.6.8-alpine3.14 AS runner
-RUN apk update -qq && \
-    apk add --no-cache postgresql-dev nodejs && \
-    mkdir /app
+FROM ruby:2.6.8-slim-buster AS runner
+RUN apt-get update -qq && \
+    apt-get install -y libpq-dev nodejs && \
+    rm -rf /var/lib/apt/lists/*
+RUN mkdir /app
 WORKDIR /app
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY . /app
